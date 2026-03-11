@@ -16,12 +16,12 @@ from torch.testing._internal.common_utils import (
     instantiate_parametrized_tests,
     parametrize,
     skipIfXpu,
+    IS_FBCODE,
 )
 from torch.testing._internal.inductor_utils import (
     GPU_TYPE,
     HAS_GPU_AND_TRITON,
     IS_BIG_GPU,
-    IS_FBCODE,
 )
 
 
