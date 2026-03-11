@@ -14,6 +14,7 @@ Reports:
 
 Requires: gh CLI (authenticated), openpyxl
 """
+
 import argparse
 import json
 import re
@@ -128,9 +129,7 @@ def extract_pr_numbers_from_timeline(events: list[dict]) -> set[int]:
     return pr_numbers
 
 
-def find_closer_from_timeline(
-    events: list[dict], owner: str, repo: str
-) -> str | None:
+def find_closer_from_timeline(events: list[dict], owner: str, repo: str) -> str | None:
     """Find who closed an issue from its timeline events.
 
     If the closer is a bot (e.g. pytorchmergebot), finds the linked
@@ -203,7 +202,9 @@ def extract_landed_by_assignee(sheet) -> dict[str, list[str]]:
             continue
         if str(status_cell.value).strip().lower() != "landed":
             continue
-        assignee = str(assignee_cell.value).strip() if assignee_cell.value else "unknown"
+        assignee = (
+            str(assignee_cell.value).strip() if assignee_cell.value else "unknown"
+        )
         # Find an issue URL in the row for labeling
         issue_label = None
         for cell in row:
